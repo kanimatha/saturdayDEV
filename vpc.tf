@@ -1,3 +1,4 @@
+# VPC
 resource "aws_vpc" "prod_vpc" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
@@ -7,6 +8,7 @@ resource "aws_vpc" "prod_vpc" {
   }
 }
 
+# Internet Gateway
 resource "aws_internet_gateway" "prod-igw" {
   vpc_id = aws_vpc.prod_vpc.id
 
@@ -15,6 +17,7 @@ resource "aws_internet_gateway" "prod-igw" {
   }
 }
 
+# Subnets
 resource "aws_subnet" "prod1-subnet" {
   vpc_id                  = aws_vpc.prod_vpc.id
   cidr_block              = "10.0.1.0/24"
